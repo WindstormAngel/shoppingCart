@@ -17,9 +17,10 @@ public class Program
         int selectedItem;
         int selectedAmount;
         //User input to control the program
-        do {
+        do
+        {
             Console.WriteLine("Would you like to... (please type the related number) \n 1. Add an item to the Cart \n 2. Delete an Item from the Cart \n 3. View the Cart \n 4. View the Item List \n 5. View Cart Total \n 6. Quit");
-            var userIn = Console.ReadLine();
+            int userIn = int.Parse(Console.ReadLine());
             if (userIn == 1)
             {
                 // lists all items in array
@@ -29,17 +30,17 @@ public class Program
                 }
 
                 Console.WriteLine("Select one of the options with the related number.");
-                selectedItem = Console.ReadLine();
+                selectedItem = int.Parse(Console.ReadLine());
                 Console.WriteLine("How many of the " + nameList[selectedItem] + " do you want?");
-                selectedAmount = Console.ReadLine();
+                selectedAmount = int.Parse(Console.ReadLine());
                 shopping.addItem(selectedAmount, selectedItem, nameList[selectedItem], priceList[selectedItem]);
 
             }
             else if (userIn == 2)
             {
                 shopping.showList();
-                Console.WriteLine("Select one of the options with the related number.");
-                selectedItem = Console.ReadLine();
+                Console.WriteLine("Select one of the options by ID number.");
+                selectedItem = int.Parse(Console.ReadLine());
                 shopping.deleteItem(selectedItem, priceList[selectedItem]);
 
             }
@@ -50,14 +51,14 @@ public class Program
             else if (userIn == 4)
             {
                 // Shows all items in the array
-                for (int i = 1; i < nameList.GetLength(1); i++)
+                for (int i = 1; i < nameList.GetLength(0); i++)
                 {
                     Console.WriteLine(idList[i] + ":" + nameList[i]);
                 }
             }
             else if (userIn == 5)
             {
-                shopping.getTotal();
+                Console.WriteLine(shopping.getTotal());
             }
             else if (userIn == 6)
             {
@@ -67,7 +68,8 @@ public class Program
             {
                 Console.WriteLine("Invalid Selection. Try the number on it's own.");
             }
-        }while(!stop);
+            Console.WriteLine("");
+        } while (!stop);
         Console.WriteLine("Thanks for using this program.");
         Console.ReadLine();
     }

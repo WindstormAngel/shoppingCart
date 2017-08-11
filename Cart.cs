@@ -1,4 +1,5 @@
-﻿namespace CartHome {
+﻿namespace CartHome
+{
 
     using System;
     using ItemHome;
@@ -59,10 +60,9 @@
             // Item found, previous skips it and now points to the next item after it
             if (itemCheck != null)
             {
+                Console.WriteLine("All of the " + itemCheck.getName() + " was removed.");
                 updateTotalDown(itemCheck.getAmount(), priceIn);
                 previousItem.next = itemCheck.next;
-                // print out that it was removed.
-                Console.WriteLine("The item was removed.");
             }
             else
             {
@@ -75,11 +75,11 @@
         {
             // creates a table of items with their names, amounts, and ids
             Item itemCheck = head;
-            Console.WriteLine("Item : Amount : ID");
+            Console.WriteLine("ID : Item : Amount");
             while (itemCheck.next != null)
             {
                 itemCheck = itemCheck.next;
-                Console.WriteLine(itemCheck.getName() + " : " + itemCheck.getAmount() + " : " + itemCheck.getId());
+                Console.WriteLine(itemCheck.getId() + " : " + itemCheck.getName() + " : " + itemCheck.getAmount());
             }
         }
 
